@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skate Glitch Hub</title>
+<style>
+:root{--paper:#f3ecdD;--ink:#183247;--blue:#225a75;--pink:#ef8b9c;--lime:#d8e36b;--card:#fffaf0;--muted:#60717a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.5}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px max(18px,calc((100% - 1080px)/2));border-bottom:3px solid var(--ink);background:#fffaf0}
+.logo{font-size:25px;font-weight:900;letter-spacing:-.8px}
+.logo span{color:#d95372}
+nav{display:flex;gap:14px;flex-wrap:wrap}
+a{color:var(--blue);font-weight:700}
+nav a{text-decoration:none;color:var(--ink)}
+main{max-width:1080px;margin:auto;padding:22px 18px 50px}
+.hero{padding:28px;border:3px solid var(--ink);border-radius:18px;background:linear-gradient(120deg,#f8c8cb,#f7e6a1 55%,#c7e4d5);box-shadow:7px 7px 0 var(--ink)}
+.kicker{text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:2px}
+h1{font-size:clamp(34px,7vw,60px);line-height:1.02;margin:8px 0 14px;letter-spacing:-2px}
+h2{margin-top:0}
+.hero p{max-width:650px;font-size:18px}
+.button{display:inline-block;border:2px solid var(--ink);border-radius:9px;padding:10px 14px;background:var(--ink);color:white;text-decoration:none;font-weight:800;cursor:pointer}
+.button.light{background:var(--card);color:var(--ink)}
+section{margin-top:28px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.filters button{border:2px solid var(--ink);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:999px;font-weight:800;cursor:pointer}
+.filters button.active{background:var(--lime)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:16px;box-shadow:4px 4px 0 #18324720}
+.card h3{margin:6px 0}
+.tag{display:inline-block;border-radius:5px;padding:3px 7px;font-size:12px;font-weight:900;background:var(--lime);color:var(--ink)}
+.tag.patched{background:#f4b7be}.tag.unsure{background:#cbdce9}
+.meta{color:var(--muted);font-size:13px}
+.submit-panel{border:2px solid var(--ink);border-radius:14px;background:#e2eee8;padding:18px}
+label{display:block;font-weight:800;margin:10px 0 4px}
+input,select,textarea{width:100%;padding:11px;border:2px solid #a5b2b3;border-radius:8px;background:white;color:var(--ink);font:inherit}
+textarea{min-height:90px;resize:vertical}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+footer{border-top:2px solid var(--ink);padding:22px 18px;text-align:center;color:var(--muted)}
+.notice{font-size:13px;color:var(--muted)}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.hero{padding:20px}header{align-items:flex-start}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">SKATE <span>GLITCH</span> HUB</div>
+  <nav aria-label="Hauptnavigation">
+    <a href="#glitches">Glitches</a><a href="#spots">Top Spots</a><a href="#submit">Glitch melden</a>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="kicker">Community wiki · skate. &amp; ReSkate</div>
+    <h1>Find the glitch.<br>Share the line.</h1>
+    <p>Eine Community-Sammlung für Glitches, Spots und Beweisvideos. Teile deine Funde und hilf allen dabei, den aktuellen Status im Blick zu behalten.</p>
+    <a class="button" href="#glitches">Glitches entdecken ↓</a>
+    <a class="button light" href="#submit">Fund einreichen</a>
+  </section>
+
+  <section id="glitches">
+    <h2>Glitch-Wiki</h2>
+    <p>Filtere die Einträge nach ihrem gemeldeten Status.</p>
+    <div class="filters" aria-label="Statusfilter">
+      <button class="active" data-filter="all">Alle</button>
+      <button data-filter="works">Funktioniert</button>
+      <button data-filter="patched">Gepatcht</button>
+      <button data-filter="unsure">Unklar</button>
+    </div>
+    <div class="grid" id="glitch-list">
+      <article class="card" data-status="works"><span class="tag">FUNKTIONIERT</span><h3>Wallride Reset</h3><p>Eintrag für einen bestätigten Glitch. Ergänze hier später Plattform, Schritte und Beweisvideo.</p><div class="meta">Spiel: skate. · Plattform: noch zu bestätigen</div></article>
+      <article class="card" data-status="unsure"><span class="tag unsure">UNKLAR</span><h3>Speed Carry</h3><p>Der Status muss noch von der Community überprüft werden.</p><div class="meta">Spiel: ReSkate · Beweis ausstehend</div></article>
+      <article class="card" data-status="patched"><span class="tag patched">GEPATCHT</span><h3>Old Spot Launch</h3><p>Als möglicherweise gepatcht gemeldet. Bitte Version und Datum ergänzen.</p><div class="meta">Spiel: skate. · Letzte Prüfung offen</div></article>
+    </div>
+    <p class="notice">Demo-Hinweis: Die Beispiel-Einträge sind Platzhalter. Neue Meldungen aus dem Formular werden in dieser Browser-Ansicht ergänzt, aber nicht dauerhaft an die Community übermittelt.</p>
+  </section>
+
+  <section id="spots">
+    <h2>Top Spots</h2>
+    <div class="grid">
+      <article class="card"><span class="tag">SPOT</span><h3>Community Spot #1</h3><p>Platzhalter für einen beliebten Ort. Ergänze Map, Anfahrt und Clip.</p></article>
+      <article class="card"><span class="tag">SPOT</span><h3>Hidden Ledge</h3><p>Platzhalter für einen versteckten Spot und seine besten Lines.</p></article>
+      <article class="card"><span class="tag">SPOT</span><h3>Big Air Zone</h3><p>Platzhalter für Sprünge, Transfers und mögliche Glitch-Setups.</p></article>
+    </div>
+  </section>
+
+  <section id="submit">
+    <h2>Glitch oder Video einreichen</h2>
+    <div class="submit-panel">
+      <form id="submission-form">
+        <div class="form-grid">
+          <div><label for="title">Name des Glitches *</label><input id="title" required placeholder="z. B. Wallride Reset"></div>
+          <div><label for="game">Spiel</label><select id="game"><option>skate.</option><option>ReSkate</option><option>Anderes</option></select></div>
+          <div><label for="status">Gemeldeter Status</label><select id="status"><option value="unsure">Unklar</option><option value="works">Funktioniert</option><option value="patched">Gepatcht</option></select></div>
+          <div><label for="platform">Plattform / Version</label><input id="platform" placeholder="z. B. PC, aktuelle Version"></div>
+        </div>
+        <label for="steps">Schritte und Hinweise</label><textarea id="steps" placeholder="Wie lässt sich der Glitch finden?"></textarea>
+        <label for="video">Link zum Beweisvideo (optional)</label><input id="video" type="url" placeholder="https://…">
+        <p><button class="button" type="submit">Vorschau hinzufügen</button></p>
+        <p class="notice">Aus Sicherheitsgründen öffnet diese Demo keine externen Uploads und speichert keine Meldungen dauerhaft.</p>
+      </form>
+      <div id="form-message" role="status"></div>
+    </div>
+  </section>
+</main>
+<footer>Skate Glitch Hub · Von der Community, für die Community 🛹</footer>
+<script>
+const filterButtons=[...document.querySelectorAll('[data-filter]')];
+filterButtons.forEach(button=>button.addEventListener('click',()=>{
+  filterButtons.forEach(b=>b.classList.toggle('active',b===button));
+  document.querySelectorAll('#glitch-list [data-status]').forEach(card=>{
+    card.hidden=button.dataset.filter!=='all'&&card.dataset.status!==button.dataset.filter;
+  });
+}));
+document.getElementById('submission-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  const title=document.getElementById('title').value.trim();
+  const game=document.getElementById('game').value;
+  const status=document.getElementById('status').value;
+  const labels={works:'FUNKTIONIERT',patched:'GEPATCHT',unsure:'UNKLAR'};
+  const card=document.createElement('article');card.className='card';card.dataset.status=status;
+  const tag=document.createElement('span');tag.className='tag'+(status==='works'?'':status==='patched'?' patched':' unsure');tag.textContent=labels[status];
+  const heading=document.createElement('h3');heading.textContent=title;
+  const description=document.createElement('p');description.textContent=game+' · '+(document.getElementById('steps').value.trim()||'Weitere Details folgen.');
+  card.append(tag,heading,description);
+  const video=document.getElementById('video').value.trim();
+  if(video){const link=document.createElement('a');link.href=video;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Beweisvideo öffnen';card.append(link);}
+  document.getElementById('glitch-list').prepend(card);
+  document.getElementById('form-message').textContent='Vorschau hinzugefügt. Sie bleibt nur in dieser geöffneten Seite sichtbar.';
+  event.target.reset();
+});
+</script>
+</body>
+</html>
